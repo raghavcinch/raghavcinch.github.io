@@ -12,7 +12,7 @@ const importObj = {
   }
 };
 
-const wasm = WebAssembly.instantiateStreaming(fetch('https://cdn.jsdelivr.net/npm/zbar.wasm@1.0.0/data/zbar.wasm'), importObj);
+const wasm = WebAssembly.instantiateStreaming(fetch('https://barkeywolf.consulting/barcode-scanner-webassembly-demo/a.out.wasm'), importObj);
 wasm
   .then(({ instance }) => {
     const { exports } = instance;
