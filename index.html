@@ -168,7 +168,6 @@ function detect(source) {
             afterDrawImage = performance.now(),
             afterGetImageData = performance.now();
 	imageData = offCtx.getImageData(0, 0, canvas.width, canvas.height);
-	const base64 = 
         return zbarWasm
             .scanImageData(imageData)
             .then(symbols => {
