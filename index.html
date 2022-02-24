@@ -17,11 +17,11 @@
   <label>
     <input id="details" type="checkbox" style="display:none">
   </label>
-  
+  <img id="img1" crossorigin="anonymous">
   <div class="viewport">
     <canvas id="canvas"></canvas>
     <img id="img" crossorigin="anonymous">
-	   <img id="img1" crossorigin="anonymous">
+	   
     <video id="video" muted autoplay playsinline></video>
   </div>
 
@@ -151,18 +151,11 @@ function imagedata_to_image(imagedata, vector){
 	var y = Math.min(vector.points[0].y,vector.points[1].y);
 	var height = Math.max( vector.points[2].x,vector.points[3].x) - x;
 	var width = Math.max( vector.points[2].y,vector.points[3].y) - y;
-hidden_ctx.drawImage(
-    canvas,
-    x,
-    y,
-    width,
-    height,
-    0,
-    0,
-    width,
-    height
-);
-	    document.getElementById('img1').src = hidden_ctx.toDataURL();
+	hidden_ctx.drawImage(canvas, x,y,width,height,0,0,width,height);
+	
+	document.getElementById('img1').src = hidden_ctx.toDataURL();
+	document.getElementById('img1').width = width;
+	document.getElementById('img1').height = height;
 	
 
 }
