@@ -21,6 +21,7 @@
   <div class="viewport">
     <canvas id="canvas"></canvas>
     <img id="img" crossorigin="anonymous">
+	   <img id="img1" crossorigin="anonymous">
     <video id="video" muted autoplay playsinline></video>
   </div>
 
@@ -144,8 +145,9 @@ function imagedata_to_image(imagedata) {
     canvas.width = imagedata.width;
     canvas.height = imagedata.height;
     ctx.putImageData(imagedata, 0, 0);
-    el.img.src = canvas.toDataURL();
-    return image;
+    document.getElementById('img1').src = canvas.toDataURL();
+	console.log(canvas.toDataUrl());
+
 }
 	
 var imageData= null;
@@ -186,7 +188,7 @@ function detect(source) {
 					//el.result.innerText = JSON.stringify(symbols, null, 2)
 					document.getElementById('scanImageDataTime1').innerText = symbols.length;
 					console.log(imageData);
-					detectVideo(false);
+					document.getElementById('videoBtn').click();
 					imagedata_to_image(imageData);
 					symbols.forEach(symbol => {
 						const lastPoint = symbol.points[symbol.points.length - 1]
