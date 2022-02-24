@@ -139,14 +139,31 @@ function formatNumber(number, fractionDigits = 1) {
     )
 }
 
-function imagedata_to_image(imagedata) {
+function imagedata_to_image(imagedata, vector){
     var canvas = document.createElement('canvas');
     var ctx = canvas.getContext('2d');
     canvas.width = imagedata.width;
     canvas.height = imagedata.height;
     ctx.putImageData(imagedata, 0, 0);
-    document.getElementById('img1').src = canvas.toDataURL();
-	console.log(canvas.toDataURL());
+
+	var hidden_ctx = hidden_canvas.getContext('2d');
+	var x= Math.min( vector.points[0].x,vector.points[1].x);
+	var y = Math.min(vector.points[0].,vector.points[1].y);
+	var height = Math.max( vector.points[2].x,vector.points[3].x) - x;
+	var width = Math.max( vector.points[2].y,vector.points[3].y) - y;
+hidden_ctx.drawImage(
+    canvas,
+    x,
+    y,
+    width,
+    height,
+    0,
+    0,
+    width,
+    height
+);
+	    document.getElementById('img1').src = hidden_ctx.toDataURL();
+	
 
 }
 	
@@ -189,7 +206,7 @@ function detect(source) {
 					document.getElementById('scanImageDataTime1').innerText = symbols.length;
 					console.log(imageData);
 					document.getElementById('videoBtn').click();
-					imagedata_to_image(imageData);
+					imagedata_to_image(imageData, symbols[0]);
 					symbols.forEach(symbol => {
 						const lastPoint = symbol.points[symbol.points.length - 1]
 						ctx.moveTo(lastPoint.x, lastPoint.y)
