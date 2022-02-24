@@ -141,6 +141,7 @@ function formatNumber(number, fractionDigits = 1) {
 
 function imagedata_to_image(imagedata, vector){
     var canvas = document.createElement('canvas');
+	var hidden_canvas = document.createElement('canvas');
     var ctx = canvas.getContext('2d');
     canvas.width = imagedata.width;
     canvas.height = imagedata.height;
