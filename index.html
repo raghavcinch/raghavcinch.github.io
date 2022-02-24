@@ -150,8 +150,8 @@ function imagedata_to_image(imagedata, vector){
 	var hidden_ctx = hidden_canvas.getContext('2d');
 	var x= Math.min( vector.points[0].x,vector.points[1].x);
 	var y = Math.min(vector.points[0].y,vector.points[1].y);
-	var height = 2 *(Math.max( vector.points[2].x,vector.points[3].x) - x);
-	var width = Math.max( vector.points[2].y,vector.points[3].y) - y;
+	var width = 2 *(Math.max( vector.points[1].x,vector.points[2].x) - x);
+	var height = Math.max( vector.points[2].y,vector.points[3].y) - y;
 	hidden_ctx.drawImage(canvas, x,y,width,height,0,0,width,height);
 	
 	document.getElementById('img1').src = hidden_canvas.toDataURL();
