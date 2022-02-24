@@ -154,7 +154,7 @@ function imagedata_to_image(imagedata, vector){
 	var width = Math.max( vector.points[2].y,vector.points[3].y) - y;
 	hidden_ctx.drawImage(canvas, x,y,width,height,0,0,width,height);
 	
-	document.getElementById('img1').src = hidden_ctx.toDataURL();
+	document.getElementById('img1').src = hidden_canvas.toDataURL();
 	document.getElementById('img1').width = width;
 	document.getElementById('img1').height = height;
 	
